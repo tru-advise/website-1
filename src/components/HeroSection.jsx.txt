@@ -1,0 +1,79 @@
+import React from 'react';
+import { motion } from 'framer-motion';
+import { Button } from '@/components/ui/button';
+
+const HeroSection = ({
+  title,
+  subtitle,
+  ctaText,
+  ctaAction,
+  backgroundImage,
+  designOption = 'option1',
+  height = 'min-h-screen',
+}) => {
+  const isOption1 = designOption === 'option1';
+
+  return (
+    <div className={`relative ${height} flex items-center justify-center overflow-hidden`}>
+      {/* Background Image with Overlay */}
+      <div className="absolute inset-0">
+        <img
+          src={backgroundImage}
+          alt="Hero background"
+          className="w-full h-full object-cover"
+        />
+        <div
+          className={`absolute inset-0 ${
+            isOption1
+              ? 'bg-gradient-to-r from-blue-900/90 via-blue-800/85 to-transparent'
+              : 'bg-gradient-to-br from-gray-900/95 via-teal-900/90 to-emerald-900/85'
+          }`}
+        />
+      </div>
+
+      {/* Content */}
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="space-y-6"
+        >
+          <h1
+            className={`text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight ${
+              isOption1 ? 'text-white' : 'text-transparent bg-clip-text bg-gradient-to-r from-teal-300 to-emerald-300'
+            }`}
+          >
+            {title}
+          </h1>
+          <p
+            className={`text-lg sm:text-xl md:text-2xl max-w-3xl mx-auto ${
+              isOption1 ? 'text-gray-200' : 'text-gray-300'
+            }`}
+          >
+            {subtitle}
+          </p>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+          >
+            <Button
+              onClick={ctaAction}
+              size="lg"
+              className={`${
+                isOption1
+                  ? 'bg-red-600 hover:bg-red-700 text-white'
+                  : 'bg-gradient-to-r from-teal-500 to-emerald-500 hover:from-teal-600 hover:to-emerald-600 text-white'
+              } px-8 py-6 text-lg font-semibold shadow-2xl transition-all duration-300 hover:scale-105`}
+            >
+              {ctaText}
+            </Button>
+          </motion.div>
+        </motion.div>
+      </div>
+    </div>
+  );
+};
+
+export default HeroSection;

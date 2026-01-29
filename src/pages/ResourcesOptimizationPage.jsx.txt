@@ -1,0 +1,119 @@
+import React from 'react';
+import { Helmet } from 'react-helmet';
+import { motion } from 'framer-motion';
+import { Users, Coins, Layers, Briefcase, TrendingUp, PieChart } from 'lucide-react';
+import Navigation from '@/components/Navigation';
+import HeroSection from '@/components/HeroSection';
+import FeatureGrid from '@/components/FeatureGrid';
+import CTASection from '@/components/CTASection';
+import Footer from '@/components/Footer';
+import { useToast } from '@/components/ui/use-toast';
+
+const ResourcesOptimizationPage = () => {
+  const { toast } = useToast();
+
+  const features = [
+    {
+      title: 'Human Capital Allocation',
+      description: 'Ensure the right people are in the right roles to maximize talent utilization.',
+      icon: <Users size={28} />,
+    },
+    {
+      title: 'Cost Reduction',
+      description: 'Identify unnecessary expenditures and optimize operational costs without sacrificing quality.',
+      icon: <Coins size={28} />,
+    },
+    {
+      title: 'Asset Utilization',
+      description: 'Maximize the return on your physical and digital assets through strategic planning.',
+      icon: <Layers size={28} />,
+    },
+    {
+      title: 'Workforce Planning',
+      description: 'Strategic forecasting to ensure you have the resources needed for future growth.',
+      icon: <Briefcase size={28} />,
+    },
+    {
+      title: 'Productivity Enhancement',
+      description: 'Tools and strategies to boost individual and team output.',
+      icon: <TrendingUp size={28} />,
+    },
+    {
+      title: 'Resource Auditing',
+      description: 'Comprehensive review of current resource distribution and utilization rates.',
+      icon: <PieChart size={28} />,
+    },
+  ];
+
+  return (
+    <>
+      <Helmet>
+        <title>Resources Optimization - truadvise</title>
+        <meta name="description" content="Maximize efficiency and reduce costs with our strategic resource optimization services." />
+      </Helmet>
+
+      <div className="bg-gradient-to-br from-gray-50 to-white">
+        <Navigation />
+
+        <HeroSection
+          title="Resources Optimization"
+          subtitle="Do more with less. Maximize the potential of your human, financial, and physical capital."
+          ctaText="Optimize Now"
+          ctaAction={() => toast({ title: "Feature coming soon!", description: "This feature is under development." })}
+          backgroundImage="https://images.unsplash.com/photo-1516383274235-5f42d6c6426d?w=1920&q=80"
+          height="min-h-[60vh]"
+        />
+
+        <section className="py-20 bg-white">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+              <motion.div
+                initial={{ opacity: 0, x: -30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6 }}
+                className="space-y-6"
+              >
+                <h2 className="text-4xl font-bold text-gray-900">Unlock Hidden Value</h2>
+                <p className="text-lg text-gray-700 leading-relaxed">
+                  Resources are finite, but their potential impact isn't. Our Resources Optimization service focuses on aligning your assets—capital, people, and technology—with your strategic goals. We help you cut waste, improve productivity, and build a leaner, more agile organization ready for any challenge.
+                </p>
+              </motion.div>
+              <motion.div
+                initial={{ opacity: 0, x: 30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6 }}
+              >
+                 <img
+                  src="https://images.unsplash.com/photo-1691109972364-0f3b7ce93527?w=800&q=80"
+                  alt="Resource optimization strategy"
+                  className="rounded-lg shadow-2xl w-full h-auto object-cover"
+                />
+              </motion.div>
+            </div>
+          </div>
+        </section>
+
+        <section className="py-20 bg-gray-50">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <FeatureGrid features={features} />
+          </div>
+        </section>
+
+        <CTASection
+          title="Maximize Your ROI"
+          subtitle="Stop leaving value on the table. Contact us to optimize your resource allocation today."
+          ctaText="Contact Us"
+          ctaAction={() => toast({ title: "Request Received", description: "We will contact you shortly." })}
+        />
+
+        <div id="footer">
+            <Footer />
+        </div>
+      </div>
+    </>
+  );
+};
+
+export default ResourcesOptimizationPage;

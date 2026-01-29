@@ -1,0 +1,119 @@
+import React from 'react';
+import { Helmet } from 'react-helmet';
+import { motion } from 'framer-motion';
+import { ClipboardCheck, Search, Star, Award, ShieldCheck, FileText } from 'lucide-react';
+import Navigation from '@/components/Navigation';
+import HeroSection from '@/components/HeroSection';
+import FeatureGrid from '@/components/FeatureGrid';
+import CTASection from '@/components/CTASection';
+import Footer from '@/components/Footer';
+import { useToast } from '@/components/ui/use-toast';
+
+const QualitativeReviewsPage = () => {
+  const { toast } = useToast();
+
+  const features = [
+    {
+      title: 'Operational Audits',
+      description: 'Deep-dive reviews into operational procedures to ensure compliance and quality standards.',
+      icon: <ClipboardCheck size={28} />,
+    },
+    {
+      title: 'Gap Analysis',
+      description: 'Identifying the difference between current performance and desired industry benchmarks.',
+      icon: <Search size={28} />,
+    },
+    {
+      title: 'Service Quality Review',
+      description: 'Assessing customer touchpoints to improve satisfaction and brand loyalty.',
+      icon: <Star size={28} />,
+    },
+    {
+      title: 'Best Practice Implementation',
+      description: 'Guiding the adoption of industry-leading standards and methodologies.',
+      icon: <Award size={28} />,
+    },
+    {
+      title: 'Risk & Compliance',
+      description: 'Qualitative assessment of risk exposure and regulatory adherence.',
+      icon: <ShieldCheck size={28} />,
+    },
+    {
+      title: 'Reporting & Insights',
+      description: 'Detailed qualitative reports providing actionable insights for management.',
+      icon: <FileText size={28} />,
+    },
+  ];
+
+  return (
+    <>
+      <Helmet>
+        <title>Qualitative Reviews - truadvise</title>
+        <meta name="description" content="Enhance your business quality and compliance with our comprehensive review and implementation services." />
+      </Helmet>
+
+      <div className="bg-gradient-to-br from-gray-50 to-white">
+        <Navigation />
+
+        <HeroSection
+          title="Qualitative Reviews & Implementations"
+          subtitle="Elevating standards through rigorous analysis and strategic implementation."
+          ctaText="Schedule a Review"
+          ctaAction={() => toast({ title: "Feature coming soon!", description: "This feature is under development." })}
+          backgroundImage="https://images.unsplash.com/photo-1622122328143-8e2269e8d3ff?w=1920&q=80"
+          height="min-h-[60vh]"
+        />
+
+        <section className="py-20 bg-white">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+              <motion.div
+                initial={{ opacity: 0, x: -30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6 }}
+                className="space-y-6"
+              >
+                <h2 className="text-4xl font-bold text-gray-900">Quality is Non-Negotiable</h2>
+                <p className="text-lg text-gray-700 leading-relaxed">
+                  Numbers tell only half the story. Our Qualitative Reviews delve into the 'how' and 'why' of your business performance. We assess the intangible factors—culture, process adherence, and service quality—that drive long-term success. Following the review, we stand by your side to implement the necessary changes.
+                </p>
+              </motion.div>
+              <motion.div
+                initial={{ opacity: 0, x: 30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6 }}
+              >
+                <img
+                  src="https://images.unsplash.com/photo-1551884171-004163219904?w=800&q=80"
+                  alt="Quality assurance review"
+                  className="rounded-lg shadow-2xl w-full h-auto object-cover"
+                />
+              </motion.div>
+            </div>
+          </div>
+        </section>
+
+        <section className="py-20 bg-gray-50">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <FeatureGrid features={features} />
+          </div>
+        </section>
+
+        <CTASection
+          title="Aim for Excellence"
+          subtitle="Transform your quality standards with our expert guidance."
+          ctaText="Start the Journey"
+          ctaAction={() => toast({ title: "Request Received", description: "We will contact you shortly." })}
+        />
+
+        <div id="footer">
+            <Footer />
+        </div>
+      </div>
+    </>
+  );
+};
+
+export default QualitativeReviewsPage;

@@ -1,0 +1,241 @@
+src/pages/HomePage.jsx
+import React from 'react';
+import { Helmet } from 'react-helmet';
+import { useNavigate } from 'react-router-dom';
+import { motion } from 'framer-motion';
+import { 
+  Building2, TrendingUp, Lightbulb, Target, Users, Award, 
+  CheckCircle2, Settings, Coins, ClipboardCheck, Globe2 
+} from 'lucide-react';
+import Navigation from '@/components/Navigation';
+import HeroSection from '@/components/HeroSection';
+import ServiceCard from '@/components/ServiceCard';
+import FeatureGrid from '@/components/FeatureGrid';
+import CTASection from '@/components/CTASection';
+import Footer from '@/components/Footer';
+import { useToast } from '@/components/ui/use-toast';
+
+const HomePage = () => {
+  const navigate = useNavigate();
+  const { toast } = useToast();
+  const designOption = 'option1';
+
+  const services = [
+    {
+      title: 'Transaction Services',
+      description: 'Unparalleled buy-side and sell-side advisory services for complex, cross-border transactions.',
+      icon: <Building2 size={24} />,
+      image: 'https://images.unsplash.com/photo-1686771416282-3888ddaf249b?w=800&q=80',
+      features: ['M&A', 'Private Equity', 'Debt Solutions'],
+      ctaText: 'Learn More',
+      ctaAction: () => navigate('/transaction-services'),
+    },
+    {
+      title: 'Management Services',
+      description: 'Expertise blended with innovation to propose the best solutions for business needs.',
+      icon: <TrendingUp size={24} />,
+      image: 'https://images.unsplash.com/photo-1684127003993-035c5d7d329b?w=800&q=80',
+      features: ['Market Research', 'Due Diligence', 'Strategy'],
+      ctaText: 'Learn More',
+      ctaAction: () => navigate('/management-services'),
+    },
+    {
+      title: 'Advisory Services',
+      description: 'Comprehensive IT & AI solutions for banking and corporate sectors to ensure integrity.',
+      icon: <Lightbulb size={24} />,
+      image: 'https://images.unsplash.com/photo-1678995635432-d9e89c7a8fc5?w=800&q=80',
+      features: ['Banking IT', 'AI Solutions', 'ERP Systems'],
+      ctaText: 'Learn More',
+      ctaAction: () => navigate('/advisory-services'),
+    },
+    {
+      title: 'Business Process Improvements',
+      description: 'Re-engineering and optimizing workflows to eliminate redundancy and boost efficiency.',
+      icon: <Settings size={24} />,
+      image: 'https://images.unsplash.com/photo-1619107278445-1c70db80eb9d?w=800&q=80',
+      features: ['Process Audit', 'Automation', 'Re-engineering'],
+      ctaText: 'Learn More',
+      ctaAction: () => navigate('/business-process'),
+    },
+    {
+      title: 'Resources Optimization',
+      description: 'Maximizing the potential of human capital and physical assets while reducing costs.',
+      icon: <Coins size={24} />,
+      image: 'https://images.unsplash.com/photo-1516383274235-5f42d6c6426d?w=800&q=80',
+      features: ['Cost Reduction', 'Asset Utilization', 'Allocation'],
+      ctaText: 'Learn More',
+      ctaAction: () => navigate('/resources-optimization'),
+    },
+    {
+      title: 'Qualitative Reviews',
+      description: 'Deep-dive audits into operational quality and compliance, followed by implementation.',
+      icon: <ClipboardCheck size={24} />,
+      image: 'https://images.unsplash.com/photo-1622122328143-8e2269e8d3ff?w=800&q=80',
+      features: ['Gap Analysis', 'Quality Audit', 'Compliance'],
+      ctaText: 'Learn More',
+      ctaAction: () => navigate('/qualitative-reviews'),
+    },
+    {
+      title: 'Overseas Representation',
+      description: 'Acting as the local face for international organizations entering new markets.',
+      icon: <Globe2 size={24} />,
+      image: 'https://images.unsplash.com/photo-1561491432-82f2b22a263e?w=800&q=80',
+      features: ['Market Entry', 'Local Presence', 'Partnerships'],
+      ctaText: 'Learn More',
+      ctaAction: () => navigate('/overseas-representation'),
+    },
+  ];
+
+  const whyChooseUs = [
+    {
+      title: 'Client Oriented',
+      description: 'We put our clients at the center of everything we do, ensuring personalized attention.',
+      icon: <Users size={28} />,
+    },
+    {
+      title: 'Success Focused',
+      description: 'Our approach is designed to drive tangible results and sustainable growth.',
+      icon: <Target size={28} />,
+    },
+    {
+      title: 'Expert Knowledge',
+      description: 'Over 100 years of collective experience with proven solution-oriented leadership.',
+      icon: <Award size={28} />,
+    },
+    {
+      title: 'Innovative Solutions',
+      description: 'We leverage the latest technologies and methodologies to deliver cutting-edge solutions.',
+      icon: <Lightbulb size={28} />,
+    },
+    {
+      title: 'Collaborative Approach',
+      description: 'Working with integrated teams and global partners to provide comprehensive services.',
+      icon: <Users size={28} />,
+    },
+    {
+      title: 'Transparency & Integrity',
+      description: 'We work with complete transparency and maintain the highest standards of integrity.',
+      icon: <CheckCircle2 size={28} />,
+    },
+  ];
+
+  return (
+    <>
+      <Helmet>
+        <title>truadvise - Professional Consulting & Advising Services</title>
+        <meta
+          name="description"
+          content="truadvise is a boutique consultancy firm providing professional consulting services for business growth, strategy, financial advisory, and management solutions."
+        />
+      </Helmet>
+
+      <div className="bg-gradient-to-br from-gray-50 to-white min-h-screen">
+        <Navigation designOption={designOption} />
+
+        {/* Hero Section */}
+        <HeroSection
+          title="Trusted Consulting for Your Business Growth"
+          subtitle="We provide frank and trustworthy advice to help your organization make the right decisions and achieve higher growth."
+          ctaText="Explore Our Services"
+          ctaAction={() => {
+            document.getElementById('services').scrollIntoView({ behavior: 'smooth' });
+          }}
+          backgroundImage="https://images.unsplash.com/photo-1675270714610-11a5cadcc7b3?w=1920&q=80"
+          designOption={designOption}
+        />
+
+        {/* Company Overview */}
+        <section className="py-20 bg-white">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="text-center max-w-4xl mx-auto space-y-6"
+            >
+              <h2 className="text-4xl font-bold text-gray-900">We Make a Difference</h2>
+              <p className="text-lg text-gray-700 leading-relaxed">
+                <span className="font-semibold text-[#DC2626]">truadvise</span> is a well-thought name to reflect our philosophy to give clients frank and <span className="italic">tru(e)</span> advise which is trustworthy, to help its organization to take the right decisions. Thus, we aspire and work towards helping our clients attain higher growth.
+              </p>
+            </motion.div>
+          </div>
+        </section>
+
+        {/* Services Section */}
+        <section id="services" className="py-20 bg-gray-50">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="text-center mb-16"
+            >
+              <h2 className="text-4xl font-bold text-gray-900 mb-4">Our Services</h2>
+              <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+                Comprehensive consulting solutions tailored to your business needs
+              </p>
+            </motion.div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+              {services.map((service, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  className="h-full"
+                >
+                  <ServiceCard {...service} designOption={designOption} />
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Why Choose Us */}
+        <section className="py-20 bg-white">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="text-center mb-16"
+            >
+              <h2 className="text-4xl font-bold text-gray-900 mb-4">Why Choose Us</h2>
+              <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+                We aspire to be known for our trustworthy quality of services
+              </p>
+            </motion.div>
+
+            <FeatureGrid features={whyChooseUs} designOption={designOption} />
+          </div>
+        </section>
+
+        {/* CTA Section */}
+        <CTASection
+          title="Ready to Transform Your Business?"
+          subtitle="Let's work together to achieve your business goals with our expert consulting services."
+          ctaText="Get Started Today"
+          ctaAction={() => {
+            toast({
+              title: 'Contact Us',
+              description: 'Please reach out to start your journey!',
+            });
+            document.getElementById('footer')?.scrollIntoView({ behavior: 'smooth' });
+          }}
+          designOption={designOption}
+        />
+
+        <div id="footer">
+            <Footer designOption={designOption} />
+        </div>
+      </div>
+    </>
+  );
+};
+
+export default HomePage;

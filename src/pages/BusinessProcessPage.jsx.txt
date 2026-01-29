@@ -1,0 +1,119 @@
+import React from 'react';
+import { Helmet } from 'react-helmet';
+import { motion } from 'framer-motion';
+import { Settings, RefreshCw, BarChart, Clock, Zap, CheckSquare } from 'lucide-react';
+import Navigation from '@/components/Navigation';
+import HeroSection from '@/components/HeroSection';
+import FeatureGrid from '@/components/FeatureGrid';
+import CTASection from '@/components/CTASection';
+import Footer from '@/components/Footer';
+import { useToast } from '@/components/ui/use-toast';
+
+const BusinessProcessPage = () => {
+  const { toast } = useToast();
+
+  const features = [
+    {
+      title: 'Process Optimization',
+      description: 'Streamline workflows to eliminate redundancy and maximize efficiency across your organization.',
+      icon: <Settings size={28} />,
+    },
+    {
+      title: 'Re-engineering Strategy',
+      description: 'Complete overhaul of existing business processes to achieve dramatic improvements in performance.',
+      icon: <RefreshCw size={28} />,
+    },
+    {
+      title: 'Performance Metrics',
+      description: 'Implementation of KPIs and measurement systems to track process efficiency and output.',
+      icon: <BarChart size={28} />,
+    },
+    {
+      title: 'Time Management',
+      description: 'Analysis and restructuring of time allocation to ensure resources are focused on high-value tasks.',
+      icon: <Clock size={28} />,
+    },
+    {
+      title: 'Automation Integration',
+      description: 'Identifying opportunities for digital automation to speed up manual processes.',
+      icon: <Zap size={28} />,
+    },
+    {
+      title: 'Quality Assurance',
+      description: 'Embedding quality checks directly into the process flow to reduce error rates.',
+      icon: <CheckSquare size={28} />,
+    },
+  ];
+
+  return (
+    <>
+      <Helmet>
+        <title>Business Process Improvements - truadvise</title>
+        <meta name="description" content="Optimize your business operations with our process re-engineering and improvement services." />
+      </Helmet>
+
+      <div className="bg-gradient-to-br from-gray-50 to-white">
+        <Navigation />
+
+        <HeroSection
+          title="Business Process Improvements"
+          subtitle="Revolutionize your operations through strategic re-engineering and optimization."
+          ctaText="Start Optimization"
+          ctaAction={() => toast({ title: "Feature coming soon!", description: "This feature is under development." })}
+          backgroundImage="https://images.unsplash.com/photo-1619107278445-1c70db80eb9d?w=1920&q=80"
+          height="min-h-[60vh]"
+        />
+
+        <section className="py-20 bg-white">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+              <motion.div
+                initial={{ opacity: 0, x: -30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6 }}
+              >
+                 <img
+                  src="https://images.unsplash.com/photo-1552581234-26160f608093?w=800&q=80"
+                  alt="Business process optimization"
+                  className="rounded-lg shadow-2xl w-full h-auto object-cover"
+                />
+              </motion.div>
+              <motion.div
+                initial={{ opacity: 0, x: 30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6 }}
+                className="space-y-6"
+              >
+                <h2 className="text-4xl font-bold text-gray-900">Efficiency Redefined</h2>
+                <p className="text-lg text-gray-700 leading-relaxed">
+                  In today's fast-paced market, stagnant processes are the enemy of growth. Our Business Process Improvements service digs deep into your operational structure to identify bottlenecks and inefficiencies. We don't just tweak; we re-engineer for success, ensuring every step adds value to your bottom line.
+                </p>
+              </motion.div>
+            </div>
+          </div>
+        </section>
+
+        <section className="py-20 bg-gray-50">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <FeatureGrid features={features} />
+          </div>
+        </section>
+
+        <CTASection
+          title="Ready to Streamline Your Business?"
+          subtitle="Let's build a more efficient, profitable future for your organization."
+          ctaText="Get a Process Audit"
+          ctaAction={() => toast({ title: "Request Received", description: "We will contact you shortly." })}
+        />
+
+        <div id="footer">
+            <Footer />
+        </div>
+      </div>
+    </>
+  );
+};
+
+export default BusinessProcessPage;

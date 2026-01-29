@@ -1,0 +1,119 @@
+import React from 'react';
+import { Helmet } from 'react-helmet';
+import { motion } from 'framer-motion';
+import { Globe2, MapPin, HeartHandshake as Handshake, Building, Plane, Languages } from 'lucide-react';
+import Navigation from '@/components/Navigation';
+import HeroSection from '@/components/HeroSection';
+import FeatureGrid from '@/components/FeatureGrid';
+import CTASection from '@/components/CTASection';
+import Footer from '@/components/Footer';
+import { useToast } from '@/components/ui/use-toast';
+
+const OverseasRepresentationPage = () => {
+  const { toast } = useToast();
+
+  const features = [
+    {
+      title: 'Local Market Entry',
+      description: 'Strategic guidance and representation for entering new international markets.',
+      icon: <Globe2 size={28} />,
+    },
+    {
+      title: 'On-Ground Representation',
+      description: 'Acting as your local face and voice, handling meetings and negotiations on your behalf.',
+      icon: <MapPin size={28} />,
+    },
+    {
+      title: 'Partnership Development',
+      description: 'Identifying and cultivating relationships with local partners and stakeholders.',
+      icon: <Handshake size={28} />,
+    },
+    {
+      title: 'Regulatory Navigation',
+      description: 'Expert assistance with local laws, regulations, and compliance requirements.',
+      icon: <Building size={28} />,
+    },
+    {
+      title: 'Logistics Coordination',
+      description: 'Facilitating cross-border operations and supply chain setup.',
+      icon: <Plane size={28} />,
+    },
+    {
+      title: 'Cultural Bridging',
+      description: 'Navigating cultural nuances to ensure smooth business communications.',
+      icon: <Languages size={28} />,
+    },
+  ];
+
+  return (
+    <>
+      <Helmet>
+        <title>Overseas Representation - truadvise</title>
+        <meta name="description" content="Expand your global footprint with our professional overseas representation services." />
+      </Helmet>
+
+      <div className="bg-gradient-to-br from-gray-50 to-white">
+        <Navigation />
+
+        <HeroSection
+          title="Overseas Representation"
+          subtitle="Your trusted partner for global expansion. We bridge the distance between your business and new markets."
+          ctaText="Expand Globally"
+          ctaAction={() => toast({ title: "Feature coming soon!", description: "This feature is under development." })}
+          backgroundImage="https://images.unsplash.com/photo-1561491432-82f2b22a263e?w=1920&q=80"
+          height="min-h-[60vh]"
+        />
+
+        <section className="py-20 bg-white">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+              <motion.div
+                initial={{ opacity: 0, x: -30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6 }}
+                className="space-y-6"
+              >
+                <h2 className="text-4xl font-bold text-gray-900">Your Global Ambassador</h2>
+                <p className="text-lg text-gray-700 leading-relaxed">
+                  Expanding overseas is a significant milestone, but it comes with unique challenges. We provide professional representation for overseas organizations looking to establish a presence in our region, and vice versa. Think of us as your local headquarters—committed to your interests and driven by your success.
+                </p>
+              </motion.div>
+              <motion.div
+                initial={{ opacity: 0, x: 30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6 }}
+              >
+                <img
+                  src="https://images.unsplash.com/photo-1691109972364-0f3b7ce93527?w=800&q=80"
+                  alt="Global business representation"
+                  className="rounded-lg shadow-2xl w-full h-auto object-cover"
+                />
+              </motion.div>
+            </div>
+          </div>
+        </section>
+
+        <section className="py-20 bg-gray-50">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <FeatureGrid features={features} />
+          </div>
+        </section>
+
+        <CTASection
+          title="Go Global with Confidence"
+          subtitle="Let us handle the complexities of international business while you focus on growth."
+          ctaText="Consult an Expert"
+          ctaAction={() => toast({ title: "Request Received", description: "We will contact you shortly." })}
+        />
+
+        <div id="footer">
+            <Footer />
+        </div>
+      </div>
+    </>
+  );
+};
+
+export default OverseasRepresentationPage;

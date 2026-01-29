@@ -1,0 +1,194 @@
+src/pages/ManagementServicesPage.jsx
+import React from 'react';
+import { Helmet } from 'react-helmet';
+import { motion } from 'framer-motion';
+import { Target, FileSearch, TrendingUp, Shield, Users, CheckCircle } from 'lucide-react';
+import Navigation from '@/components/Navigation';
+import HeroSection from '@/components/HeroSection';
+import FeatureGrid from '@/components/FeatureGrid';
+import CTASection from '@/components/CTASection';
+import Footer from '@/components/Footer';
+import { useToast } from '@/components/ui/use-toast';
+
+const ManagementServicesPage = () => {
+  const { toast } = useToast();
+  const designOption = 'option1';
+
+  const features = [
+    {
+      title: 'Market Research & Feasibility Studies',
+      description: 'Comprehensive market analysis and feasibility studies to inform strategic decision-making.',
+      icon: <FileSearch size={28} />,
+    },
+    {
+      title: 'Due Diligence & Business Valuation',
+      description: 'Thorough due diligence processes and accurate business valuations for informed transactions.',
+      icon: <Target size={28} />,
+    },
+    {
+      title: 'Business & Operational Strategy',
+      description: 'Strategic formulation and operational planning to achieve your business objectives.',
+      icon: <TrendingUp size={28} />,
+    },
+    {
+      title: 'Complete Risk Assessment',
+      description: 'Comprehensive risk evaluation and mitigation strategies for sustainable growth.',
+      icon: <Shield size={28} />,
+    },
+    {
+      title: 'Business Process Re-engineering',
+      description: 'Optimization of business processes for improved efficiency and effectiveness.',
+      icon: <Users size={28} />,
+    },
+    {
+      title: 'Management System Implementation',
+      description: 'ISO 9001, ISO 14001, OHSAS 18001, and BS 7799 implementation services.',
+      icon: <CheckCircle size={28} />,
+    },
+  ];
+
+  const services = [
+    'Market Research & Feasibility Studies',
+    'Due Diligence & Business Valuation',
+    'Representation for overseas enterprises',
+    'Business & Operational Strategy Formulation',
+    'Complete risk assessment',
+    'Business process re-engineering',
+    'IT Security Management System (BS 7799)',
+    'Disaster Recovery and Business Continuity Planning',
+    'Management System Implementation',
+    'Environment Study and Review',
+  ];
+
+  return (
+    <>
+      <Helmet>
+        <title>Management Services - truadvise Consulting & Advising</title>
+        <meta
+          name="description"
+          content="Comprehensive management consulting services including market research, business strategy, risk assessment, and management system implementation."
+        />
+      </Helmet>
+
+      <div className="bg-gradient-to-br from-gray-50 to-white">
+        <Navigation designOption={designOption} />
+
+        {/* Hero Section */}
+        <HeroSection
+          title="Management Services"
+          subtitle="Combining expertise with innovative ideas for optimal business solutions"
+          ctaText="Contact Us"
+          ctaAction={() => {
+            toast({
+              title: 'Feature coming soon!',
+              description: 'This feature is under development.',
+            });
+          }}
+          backgroundImage="https://images.unsplash.com/photo-1652301173329-31271a0be5c8?w=1920&q=80"
+          designOption={designOption}
+          height="min-h-[60vh]"
+        />
+
+        {/* Service Overview */}
+        <section className="py-20 bg-white">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="max-w-4xl mx-auto text-center space-y-6"
+            >
+              <h2 className="text-4xl font-bold text-gray-900">Strategic Management Solutions</h2>
+              <p className="text-lg text-gray-700 leading-relaxed">
+                <span className="font-semibold text-red-600">truadvise</span> combines its expertise and experience blend with new ideas in proposing best solutions for our customers. We carefully study all related aspects including future prospects, marketability, tax and legal matters, availability of material, resources, land and space, finance requirements etc. in our preparation of the feasibility report.
+              </p>
+              <p className="text-lg text-gray-700 leading-relaxed">
+                We discuss draft observations with customers and incorporate, align their feedback and requirements in the final document.
+              </p>
+            </motion.div>
+          </div>
+        </section>
+
+        {/* Key Features */}
+        <section className="py-20 bg-gray-50">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="text-center mb-16"
+            >
+              <h2 className="text-4xl font-bold text-gray-900 mb-4">Our Expertise</h2>
+              <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+                Comprehensive management consulting services for sustainable growth
+              </p>
+            </motion.div>
+
+            <FeatureGrid features={features} designOption={designOption} />
+          </div>
+        </section>
+
+        {/* Service Details */}
+        <section className="py-20 bg-white">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+              <motion.div
+                initial={{ opacity: 0, x: -30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6 }}
+                className="space-y-6"
+              >
+                <h2 className="text-3xl font-bold text-gray-900">Complete Service Offering</h2>
+                <p className="text-lg text-gray-700">
+                  Our management services cover every aspect of business operations, from strategic planning to implementation and review.
+                </p>
+                <ul className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  {services.map((service, index) => (
+                    <li key={index} className="flex items-start">
+                      <span className="text-red-600 text-xl mr-3 flex-shrink-0">✓</span>
+                      <span className="text-gray-700">{service}</span>
+                    </li>
+                  ))}
+                </ul>
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, x: 30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6 }}
+              >
+                <img
+                  src="https://images.unsplash.com/photo-1681949215173-fe0d15c790c1?w=800&q=80"
+                  alt="Business strategy meeting"
+                  className="rounded-lg shadow-2xl w-full h-auto object-cover"
+                />
+              </motion.div>
+            </div>
+          </div>
+        </section>
+
+        {/* CTA Section */}
+        <CTASection
+          title="Transform Your Business Operations"
+          subtitle="Let our experienced consultants help you optimize your management strategies and achieve sustainable growth."
+          ctaText="Get Started Today"
+          ctaAction={() => {
+            toast({
+              title: 'Feature coming soon!',
+              description: 'This feature is under development.',
+            });
+          }}
+          designOption={designOption}
+        />
+
+        <Footer designOption={designOption} />
+      </div>
+    </>
+  );
+};
+
+export default ManagementServicesPage;

@@ -1,0 +1,189 @@
+import React from 'react';
+import { Helmet } from 'react-helmet';
+import { motion } from 'framer-motion';
+import { Building2, TrendingUp, DollarSign, HeartHandshake as Handshake, Globe, Shield } from 'lucide-react';
+import Navigation from '@/components/Navigation';
+import HeroSection from '@/components/HeroSection';
+import FeatureGrid from '@/components/FeatureGrid';
+import CTASection from '@/components/CTASection';
+import Footer from '@/components/Footer';
+import { useToast } from '@/components/ui/use-toast';
+
+const TransactionServicesPage = () => {
+  const { toast } = useToast();
+  const designOption = 'option1';
+
+  const features = [
+    {
+      title: 'Mergers and Acquisitions',
+      description: 'Providing unparalleled buy-side and sell-side advisory services with comprehensive market analysis and strategic guidance.',
+      icon: <Handshake size={28} />,
+    },
+    {
+      title: 'Cross-Border Transactions',
+      description: 'Ability to run complex, cross-border transactions through our vast network of international banking alliances.',
+      icon: <Globe size={28} />,
+    },
+    {
+      title: 'Private Equity Syndication',
+      description: 'Providing corporations, entrepreneurs, and investors with top-quality transaction and syndication advice.',
+      icon: <TrendingUp size={28} />,
+    },
+    {
+      title: 'Global Financier Network',
+      description: 'Strong relationships with a large number of global and local financiers for optimal deal structures.',
+      icon: <Building2 size={28} />,
+    },
+    {
+      title: 'Debt Solutions',
+      description: 'Extensive experience in debt restructuring, capital raising, and financing solutions.',
+      icon: <DollarSign size={28} />,
+    },
+    {
+      title: 'Strategic Partnerships',
+      description: 'Assisting clients in financing through private equity or debt and providing advice on strategic partnerships.',
+      icon: <Shield size={28} />,
+    },
+  ];
+
+  const capabilities = [
+    'Buy-side and sell-side advisory',
+    'Valuation and financial modeling',
+    'Due diligence coordination',
+    'Deal structuring and negotiation',
+    'Post-merger integration support',
+    'Capital raising strategies',
+  ];
+
+  return (
+    <>
+      <Helmet>
+        <title>Transaction Services - truadvise Consulting & Advising</title>
+        <meta
+          name="description"
+          content="Expert transaction advisory services including mergers & acquisitions, private equity syndication, debt solutions, and cross-border transactions."
+        />
+      </Helmet>
+
+      <div className="bg-gradient-to-br from-gray-50 to-white">
+        <Navigation designOption={designOption} />
+
+        {/* Hero Section */}
+        <HeroSection
+          title="Transaction Services"
+          subtitle="Unparalleled advisory for complex transactions and strategic partnerships"
+          ctaText="Contact Us"
+          ctaAction={() => {
+            toast({
+              title: 'Feature coming soon!',
+              description: 'This feature is under development.',
+            });
+          }}
+          backgroundImage="https://images.unsplash.com/photo-1692914266650-31dfa1637591?w=1920&q=80"
+          designOption={designOption}
+          height="min-h-[60vh]"
+        />
+
+        {/* Service Overview */}
+        <section className="py-20 bg-white">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="max-w-4xl mx-auto text-center space-y-6"
+            >
+              <h2 className="text-4xl font-bold text-gray-900">Comprehensive Transaction Advisory</h2>
+              <p className="text-lg text-gray-700 leading-relaxed">
+                Our transaction services provide unparalleled buy-side and sell-side advisory with the ability to run complex, cross-border transactions through our vast network of alliances with international banks in other geographies.
+              </p>
+              <p className="text-lg text-gray-700 leading-relaxed">
+                We provide corporations, entrepreneurs, and investors with top-quality transaction and syndication advice, backed by strong relationships with global and local financiers.
+              </p>
+            </motion.div>
+          </div>
+        </section>
+
+        {/* Key Features */}
+        <section className="py-20 bg-gray-50">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="text-center mb-16"
+            >
+              <h2 className="text-4xl font-bold text-gray-900 mb-4">Our Capabilities</h2>
+              <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+                Comprehensive transaction services to drive your business forward
+              </p>
+            </motion.div>
+
+            <FeatureGrid features={features} designOption={designOption} />
+          </div>
+        </section>
+
+        {/* Service Details */}
+        <section className="py-20 bg-white">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+              <motion.div
+                initial={{ opacity: 0, x: -30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6 }}
+              >
+                <img
+                  src="https://images.unsplash.com/photo-1686771416282-3888ddaf249b?w=800&q=80"
+                  alt="Professional team discussion"
+                  className="rounded-lg shadow-2xl w-full h-auto object-cover"
+                />
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, x: 30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6 }}
+                className="space-y-6"
+              >
+                <h2 className="text-3xl font-bold text-gray-900">What We Deliver</h2>
+                <p className="text-lg text-gray-700">
+                  Our transaction services are designed to maximize value and minimize risk throughout the entire deal lifecycle.
+                </p>
+                <ul className="space-y-4">
+                  {capabilities.map((capability, index) => (
+                    <li key={index} className="flex items-start">
+                      <span className="text-red-600 text-xl mr-3">✓</span>
+                      <span className="text-gray-700 text-lg">{capability}</span>
+                    </li>
+                  ))}
+                </ul>
+              </motion.div>
+            </div>
+          </div>
+        </section>
+
+        {/* CTA Section */}
+        <CTASection
+          title="Ready to Execute Your Next Transaction?"
+          subtitle="Let our experienced team guide you through complex transactions with confidence and expertise."
+          ctaText="Schedule a Consultation"
+          ctaAction={() => {
+            toast({
+              title: 'Feature coming soon!',
+              description: 'This feature is under development.',
+            });
+          }}
+          designOption={designOption}
+        />
+
+        <Footer designOption={designOption} />
+      </div>
+    </>
+  );
+};
+
+export default TransactionServicesPage;
